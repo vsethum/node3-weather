@@ -2,7 +2,7 @@ const request = require('request')
 
 const forecast =(latitude, longitude, callback) =>{
 
-    const url = 'http://api.weatherstack.com/current?access_key=bbe094fdff209f9a3549cdedf16afa02&query=' + longitude + ',' + latitude + '&units=f'
+    const url = 'http://api.weatherstack.com/current?access_key=bbe094fdff209f9a3549cdedf16afa02&query=' + latitude + ',' + longitude + '&units=f'
 
     console.log(url)
 
@@ -14,7 +14,8 @@ const forecast =(latitude, longitude, callback) =>{
             callback('No response from forecast services', undefined)
 
         } else {
-            callback(undefined, body.current.weather_descriptions[0] + '. It is currently ' + body.current.temperature + ' degrees out. It feels like ' +  body.current.feelslike + ' degrees out.')
+            console.log(body.current)
+            callback(undefined, body.current.weather_descriptions[0] + '. It is currently ' + body.current.temperature + ' degrees out. It feels like ' +  body.current.feelslike + ' degrees out.' + 'The Humidity is ' + body.current.humidity)
         }      
 
 
